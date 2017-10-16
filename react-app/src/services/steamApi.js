@@ -54,7 +54,7 @@ function getUserGameList (steamid) {
 
 // IMPORTANT INFO THIS FUNCTION SHOULD BE CALLED WITTH TWO STRINGS
 // This function returns achivement information about a game and a user
-function searchGameAchivements(appId , steamid) {
+function searchGameAchivements (appId, steamid) {
   return (axios.get({
     url: urlGameAchivements,
     data: {
