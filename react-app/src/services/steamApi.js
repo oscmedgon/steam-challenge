@@ -6,11 +6,10 @@ const urlVanityNameSearch = 'https://api.steampowered.com/ISteamUser/ResolveVani
 const urlSearchUserGameList = 'https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/'
 const urlGameAchivements = 'http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/'
 const urlUserInfo = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/'
-const getGameInfo = 'https://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/'
+const urlGetGameInfo = 'https://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/'
 
 // This function should be called with a string
 // This function converts a username to a steamID
-// EJECUTE THIS COMMAND IN CONSOLE TO GET A PREVIEW OF THE SERVER RESPONSE
 
 function getSteamId (vanityName) {
   return (axios.get({
@@ -18,6 +17,63 @@ function getSteamId (vanityName) {
     data: {
       vanityurl: vanityName,
       key: apiKey,
+      format: 'jsonp'
+    }
+  })
+  )
+}
+
+// This function should be called with a string
+// This function returns all user info
+
+function getUserInfo (steamid) {
+  return (axios.get({
+    url: urlUserInfo,
+    data: {
+      vanityurl: steamid,
+      key: apiKey,
+      format: 'jsonp'
+    }
+  })
+  )
+}
+// This function should be called with a string
+// This function returns the list of games of an user
+
+function getUserGameList (steamid) {
+  return (axios.get({
+    url: urlSearchUserGameList,
+    data: {
+      vanityurl: steamid,
+      key: apiKey,
+      format: 'jsonp'
+    }
+  })
+  )
+}
+
+// IMPORTANT INFO THIS FUNCTION SHOULD BE CALLED WITTH TWO STRINGS
+// This function returns achivement information about a game and a user
+function searchGameAchivements(appId , steamid) {
+  return (axios.get({
+    url: urlGameAchivements,
+    data: {
+      appid: appId,
+      key: apiKey,
+      steamid: steamid,
+      format: 'jsonp'
+    }
+  })
+  )
+}
+
+// IMPORTANT INFO THIS FUNCTION SHOULD BE CALLED WITH A STRING
+// This function returns all information about a game.
+function getGameInfo (appId) {
+  return (axios.get({
+    url: urlGetGameInfo,
+    data: {
+      appid: appId,
       format: 'jsonp'
     }
   })
