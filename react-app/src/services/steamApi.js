@@ -30,7 +30,7 @@ function getUserInfo (steamid) {
   return (axios.get({
     url: urlUserInfo,
     data: {
-      vanityurl: steamid,
+      steamid: steamid,
       key: apiKey,
       format: 'jsonp'
     }
@@ -41,10 +41,11 @@ function getUserInfo (steamid) {
 // This function returns the list of games of an user
 
 function getUserGameList (steamid) {
+
   return (axios.get({
     url: urlSearchUserGameList,
     data: {
-      vanityurl: steamid,
+      steamid: steamid,
       key: apiKey,
       format: 'jsonp'
     }
