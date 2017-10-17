@@ -22,47 +22,47 @@ class SelectPlayers extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.changeStatus = this.changeStatus.bind(this)
   }
-  handleChange(e) {
+  handleChange (e) {
     const input = e.target.value
     const player = e.currentTarget.dataset.id
 
-    this.setState(function(prevState) {
-         prevState[player].input = input
-
-         return prevState
+    this.setState(function (prevState) {
+      prevState[player].input = input
+      return prevState
     })
   }
 
-  handleSubmit(e) {
+  handleSubmit (e) {
     e.preventDefault()
-    console.log(dataType(this.state.player1.input))
-    console.log(dataType(this.state.player2.input))
+    console.log(dataType(this.state.player1.input, this.changeStatus, 'player1'))
+    console.log(dataType(this.state.player2.input, this.changeStatus, 'player2'))
   }
-  changeStatus(id, status, player) {
+  changeStatus (id, status, player, input) {
     this.setState({
-      //
+      // enhanced object properties, to guapo player takes player prop value
       [player]: {
         id: id,
-        status: status
+        status: status,
+        input: input
       }
     })
   }
 
-  render() {
+  render () {
     return (
       <div>
-        <Navbar/>
+        <Navbar />
         <div className='container'>
           <div className='row'>
             <form onSubmit={this.handleSubmit}>
               <div className='col-sm-5'>
-                <input onChange={this.handleChange} value={this.state.player1.input} data-id='player1' className='form-control imput-lg' type='text' required/>
+                <input onChange={this.handleChange} value={this.state.player1.input} data-id='player1' className='form-control imput-lg' type='text' required />
               </div>
               <div className='col-sm-2'>
                 <button>-VS-</button>
               </div>
               <div className='col-sm-5'>
-                <input onChange={this.handleChange} value={this.state.player2.input} data-id='player2' className='form-control imput-lg' type='text' required/>
+                <input onChange={this.handleChange} value={this.state.player2.input} data-id='player2' className='form-control imput-lg' type='text' required />
               </div>
             </form>
           </div>

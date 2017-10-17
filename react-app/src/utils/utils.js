@@ -1,33 +1,33 @@
 import {getUserInfo, getSteamId} from '../services/steamApi'
 
-function verifySteamId (data) {
-  return getUserInfo(data).then(function (ApiData) {
-		console.log(data)
+function verifySteamId (data, updaterMethod, player) {
+  getUserInfo(data).then(function (ApiData) {
     if (ApiData.data.response.players[0].steamid) {
-      return data
+      updaterMethod(data, 'ok', player, ApiData.data.response.players[0].personaname)
     } else {
-      return 'No match for ' + data
+      updaterMethod(data, 'ko', player, '')
     }
   })
 }
 
-function verifyUserName (data) {
+function verifyUserName (data, updaterMethod, player) {
   getSteamId(data).then(function (ApiData) {
 	console.log(data)
     if (ApiData.data.response.steamid) {
-      return ApiData.data.response.steamid
+
+			updaterMethod(ApiData.data.response.steamid, 'ok', player, data)
     } else {
-      return 'No user found for ' + data
+      updaterMethod(data, 'ko', player, '')
     }
   })
 }
 
-function dataType (userInput) {
+function dataType (userInput, updaterMethod, player) {
   console.log(userInput)
   if (userInput.match(/(\b\d{17}\b)/)) {
-    console.log(verifySteamId(userInput))
+    verifySteamId(userInput, updaterMethod, player)
   } else {
-    console.log(verifyUserName(userInput))
+    verifyUserName(userInput, updaterMethod, player)
   }
 }
 
