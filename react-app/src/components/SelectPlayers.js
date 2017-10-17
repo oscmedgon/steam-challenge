@@ -1,80 +1,73 @@
 import React, {Component} from 'react'
 import Navbar from './Navigation'
 import {dataType} from '../utils/utils'
+import UserCard from './UserCard'
 
 class SelectPlayers extends Component {
-  constructor () {
+  constructor() {
     super()
     this.state = {
-      player1: '',
-      player2: ''
+      player1: {
+        input: '',
+        id: '',
+        status: 'pend'
+      },
+      player2: {
+        input: '',
+        id: '',
+        status: 'pend'
+      }
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.changeStatus = this.changeStatus.bind(this)
   }
-  handleChange (e) {
-    if (e.currentTarget.dataset.id === 'player1') {
-      this.setState({
-        player1: e.target.value
-      })
-    } else if (e.currentTarget.dataset.id === 'player2') {
-      this.setState({
-        player2: e.target.value
-      })
-    }
-  }
+  handleChange(e) {
+    const input = e.target.value
+    const player = e.currentTarget.dataset.id
 
-handleSubmit (e){
-e.preventDefault()
-    dataType(this.state.player1)
-    .then(function (data){
-      console.log(data)
-        if(data.data.response.success===1){
-          this.setState({
-            player1: data.data.response.steamid
+    this.setState(function(prevState) {
+         prevState[player].input = input
 
-          })
-        }
-          console.log(data)
-        })
-    .catch(function(error){
-      console.error(error)
+         return prevState
     })
-    dataType(this.state.player2)
-    .then(function (data){
-       console.log(data)
-      if(data.data.response.success===1){
-        this.setState({
-          player2:data.data.response.steamid
-        })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+    console.log(dataType(this.state.player1.input))
+    console.log(dataType(this.state.player2.input))
+  }
+  changeStatus(id, status, player) {
+    this.setState({
+      //
+      [player]: {
+        id: id,
+        status: status
       }
-          console.log(data)
-        })
-    .catch(function(error){
-      console.error(error)
     })
   }
 
-  render () {
+  render() {
     return (
       <div>
-        <Navbar />
+        <Navbar/>
         <div className='container'>
           <div className='row'>
-          <form onSubmit= {this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
               <div className='col-sm-5'>
-                <input onChange={this.handleChange} value={this.state.player1} data-id='player1' className='form-control imput-lg' type='text' />
+                <input onChange={this.handleChange} value={this.state.player1.input} data-id='player1' className='form-control imput-lg' type='text' required/>
               </div>
               <div className='col-sm-2'>
                 <button>-VS-</button>
               </div>
               <div className='col-sm-5'>
-                <input onChange={this.handleChange} value={this.state.player2} data-id='player2' className='form-control imput-lg' type='text' />
+                <input onChange={this.handleChange} value={this.state.player2.input} data-id='player2' className='form-control imput-lg' type='text' required/>
               </div>
             </form>
+          </div>
         </div>
       </div>
-    </div>
     )
   }
 }

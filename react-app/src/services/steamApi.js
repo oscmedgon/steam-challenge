@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // Those are the prerequisites to call steam API, Token and base url
 const apiKey = 'CD18B4C89181FB1E71DB9A5EC21AA8CC'
-const urlVanityNameSearch = 'https://proxy-steam.herokuapp.com/ISteamUser/ResolveVanityURL/v0001/'
+const urlVanityNameSearch = 'https://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/'
 const urlSearchUserGameList = 'https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/'
 const urlGameAchivements = 'http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/'
 const urlUserInfo = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/'
@@ -12,7 +12,7 @@ const urlGetGameInfo = 'https://api.steampowered.com/ISteamUserStats/GetSchemaFo
 // This function converts a username to a steamID
 
 function getSteamId (vanityName) {
-  return (axios.get(urlVanityNameSearch ,{
+  return (axios.get(urlVanityNameSearch, {
     params: {
       vanityurl: vanityName,
       key: apiKey
@@ -27,7 +27,7 @@ function getSteamId (vanityName) {
 function getUserInfo (steamid) {
   return (axios.get(urlUserInfo ,{
     params: {
-      steamid: steamid,
+      steamids: steamid,
       key: apiKey,
       format: 'jsonp'
     }
