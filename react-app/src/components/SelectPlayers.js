@@ -26,12 +26,33 @@ class SelectPlayers extends Component {
 
 handleSubmit (e){
 e.preventDefault()
-    dataType(this.state.player1).then(function (data){
+    dataType(this.state.player1)
+    .then(function (data){
+      console.log(data)
+        if(data.data.response.success===1){
+          this.setState({
+            player1: data.data.response.steamid
+
+          })
+        }
           console.log(data)
         })
-    dataType(this.state.player2).then(function (data){
+    .catch(function(error){
+      console.error(error)
+    })
+    dataType(this.state.player2)
+    .then(function (data){
+       console.log(data)
+      if(data.data.response.success===1){
+        this.setState({
+          player2:data.data.response.steamid
+        })
+      }
           console.log(data)
         })
+    .catch(function(error){
+      console.error(error)
+    })
   }
 
   render () {
