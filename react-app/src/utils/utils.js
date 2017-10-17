@@ -14,7 +14,6 @@ function verifyUserName (data, updaterMethod, player) {
   getSteamId(data).then(function (ApiData) {
 	console.log(data)
     if (ApiData.data.response.steamid) {
-
 			updaterMethod(ApiData.data.response.steamid, 'ok', player, data)
     } else {
       updaterMethod(data, 'ko', player, '')
