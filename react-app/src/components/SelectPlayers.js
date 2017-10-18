@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Navbar from './Navigation'
-import {dataType} from '../utils/utils'
+import {checkUser} from '../utils/utils'
 import UserCard from './UserCard'
 
 class SelectPlayers extends Component {
@@ -9,18 +9,15 @@ class SelectPlayers extends Component {
     this.state = {
       player1: {
         input: '',
-        id: '',
         status: 'pend'
       },
       player2: {
         input: '',
-        id: '',
         status: 'pend'
       }
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.changeStatus = this.changeStatus.bind(this)
   }
   handleChange (e) {
     const input = e.target.value
@@ -34,19 +31,30 @@ class SelectPlayers extends Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    console.log(dataType(this.state.player1.input, this.changeStatus, 'player1'))
-    console.log(dataType(this.state.player2.input, this.changeStatus, 'player2'))
+
+      const players = {}
+
+      const check1 = checkUser(this.state.player1.input)
+          .then(function(res) {
+              players.player1 = res
+          })
+
+      const check2 = checkUser(this.state.player2.input)
+          .then(function(res) {
+              players.player2 = res
+          })
+
+      Promise.all([check1, check2])
+          .then(() => {
+              this.setPlayers(players.player1, players.player2)
+          })
   }
-  changeStatus (id, status, player, data) {
-    this.setState({
-      // enhanced object properties, to guapo player takes player prop value
-      [player]: {
-        id: id,
-        status: status,
-        input: id,
-        playerData: data
-      }
-    })
+
+  setPlayers(player1, player2) {
+      this.setState({
+          player1,
+          player2
+      })
   }
 
   render () {
@@ -68,10 +76,12 @@ class SelectPlayers extends Component {
             </form>
           </div>
         </div>
-        {this.state.player1.status !== 'pend' && this.state.player2.status !== 'pend' && <UserCard data={this.state} /> || undefined}
+          {this.state.player1.status !== 'pend' && this.state.player2.status !== 'pend' && <UserCard data={this.state} /> || undefined}
       </div>
     )
   }
 }
+
+//
 
 export default SelectPlayers

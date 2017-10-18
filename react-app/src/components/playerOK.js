@@ -6,10 +6,10 @@ const PlayerOkCard = ({player}) => {
     <div className='row'>
       <div>
         <div className='col-xs-3'>
-          <img className='img-responsive' src={player.playerData.avatarfull} alt='user avatar' />
+          <img className='img-responsive' src={player.avatarfull} alt='user avatar' />
         </div>
         <div className='col-xs-9'>
-          <h2>{player.playerData.personaname}</h2>
+          <h2>{player.personaname}</h2>
         </div>
       </div>
       <div className='col-xs-12'>
@@ -18,7 +18,7 @@ const PlayerOkCard = ({player}) => {
             Profile URL:
           </strong>
           <span>
-            {player.playerData.profileurl}
+            {player.profileurl}
           </span>
         </p>
         <p>
@@ -26,7 +26,7 @@ const PlayerOkCard = ({player}) => {
             Profile ID:
           </strong>
           <span>
-            {player.playerData.steamid}
+            {player.steamid}
           </span>
         </p>
         <p>
@@ -34,7 +34,7 @@ const PlayerOkCard = ({player}) => {
             Profile Name:
           </strong>
           <span>
-            {player.playerData.personaname}
+            {player.personaname}
           </span>
         </p>
       </div>
