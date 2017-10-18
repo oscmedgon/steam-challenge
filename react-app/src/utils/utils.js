@@ -32,10 +32,16 @@ function checkUser (userInput) {
     return verifyUserName(userInput)
   }
 }
-function matchGames(playersGames){
-
+function matchGames(player1Games, player2Games, updateGameList){
+  const aMatchedGames = player1Games.filter(function(misagame) {
+    return player2Games.find(function (tusagame){
+      return tusagame === misagame
+    })
+  })
+  console.log(aMatchedGames)
 }
-function getGamesList (id1, id2) {
+
+function getGamesList (id1, id2, updateGameList) {
   console.log(id1 , id2)
   getUserGameList(id1).then(function (apiData) {
     const player1Games = apiData.data.response
@@ -43,7 +49,7 @@ function getGamesList (id1, id2) {
     getUserGameList(id2).then(function (apiData) {
       const player2Games = apiData.data.response
       console.log(player2Games)
-      matchGames([player1Games, player2Games])
+      matchGames([player1Games, player2Games, updateGameList])
     }
   )
   }
