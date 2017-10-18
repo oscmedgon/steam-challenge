@@ -5,8 +5,8 @@ class GameList extends Component{
 	constructor(props){
 		super(props)
 	}
-	componentDidMount() {
-		getGamesList(this.props.id1)
+	componentDidMount () {
+		getGamesList(this.props.id1, this.props.id2)
 	}
 render(){
 	return (

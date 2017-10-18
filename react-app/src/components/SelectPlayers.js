@@ -8,11 +8,11 @@ class SelectPlayers extends Component {
     super()
     this.state = {
       player1: {
-        input: '',
+        input: 'undertakertfk',
         status: 'pend'
       },
       player2: {
-        input: '',
+        input: 'asf',
         status: 'pend'
       }
     }
