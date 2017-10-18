@@ -37,13 +37,14 @@ class SelectPlayers extends Component {
     console.log(dataType(this.state.player1.input, this.changeStatus, 'player1'))
     console.log(dataType(this.state.player2.input, this.changeStatus, 'player2'))
   }
-  changeStatus (id, status, player, input) {
+  changeStatus (id, status, player, data) {
     this.setState({
       // enhanced object properties, to guapo player takes player prop value
       [player]: {
         id: id,
         status: status,
-        input: input
+        input: id,
+        playerData: data
       }
     })
   }
@@ -67,6 +68,7 @@ class SelectPlayers extends Component {
             </form>
           </div>
         </div>
+        {this.state.player1.status !== 'pend' && this.state.player2.status !== 'pend' && <UserCard data={this.state} /> || undefined}
       </div>
     )
   }

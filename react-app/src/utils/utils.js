@@ -3,7 +3,7 @@ import {getUserInfo, getSteamId} from '../services/steamApi'
 function verifySteamId (data, updaterMethod, player) {
   getUserInfo(data).then(function (ApiData) {
     if (ApiData.data.response.players[0].steamid) {
-      updaterMethod(data, 'ok', player, ApiData.data.response.players[0].personaname)
+      updaterMethod(data, 'ok', player, ApiData.data.response.players[0])
     } else {
       updaterMethod(data, 'ko', player, '')
     }
@@ -12,9 +12,9 @@ function verifySteamId (data, updaterMethod, player) {
 
 function verifyUserName (data, updaterMethod, player) {
   getSteamId(data).then(function (ApiData) {
-	console.log(data)
+    console.log(data)
     if (ApiData.data.response.steamid) {
-			updaterMethod(ApiData.data.response.steamid, 'ok', player, data)
+      verifySteamId(ApiData.data.response.steamid, updaterMethod, player)
     } else {
       updaterMethod(data, 'ko', player, '')
     }
