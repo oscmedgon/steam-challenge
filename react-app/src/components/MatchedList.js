@@ -60,9 +60,16 @@ class MatchedList extends Component {
     })
   }
   render () {
-    return this.state.games.map(function(game,i){
-      return <li className='col-sm-6 col-md-4' key={i}>{game.gameName}</li>
-    })
+    return (
+
+        this.state.games.filter((obj)=>{
+          console.log(obj.gameName)
+          return  obj.gameName !== undefined && !obj.gameName.includes('ValveTestApp') && obj.gameName !== ''
+        }).map(function(game,i){
+          return <li className='col-sm-6 col-md-4' key={i}>{game.gameName}</li>
+        })
+
+    )
   }
 }
 
