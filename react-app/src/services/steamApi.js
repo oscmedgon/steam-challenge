@@ -25,7 +25,7 @@ function getSteamId (vanityName) {
 // This function returns all user info
 
 function getUserInfo (steamid) {
-  return (axios.get(urlUserInfo ,{
+  return (axios.get(urlUserInfo, {
     params: {
       steamids: steamid,
       key: apiKey,
@@ -39,9 +39,7 @@ function getUserInfo (steamid) {
 // This function returns the list of games of an user
 
 function getUserGameList (steamid) {
-  console.log(steamid)
-  console.log(typeof (steamid))
-  return (axios.get(urlSearchUserGameList ,{
+  return (axios.get(urlSearchUserGameList, {
       params: {
       steamid: steamid,
       key: apiKey,
@@ -54,7 +52,7 @@ function getUserGameList (steamid) {
 // IMPORTANT INFO THIS FUNCTION SHOULD BE CALLED WITTH TWO STRINGS
 // This function returns achivement information about a game and a user
 function searchGameAchivements (appId, steamid) {
-  return (axios.get(urlGameAchivements,{
+  return (axios.get(urlGameAchivements, {
     params: {
       appid: appId,
       key: apiKey,
@@ -68,11 +66,10 @@ function searchGameAchivements (appId, steamid) {
 // IMPORTANT INFO THIS FUNCTION SHOULD BE CALLED WITH A STRING
 // This function returns all information about a game.
 function getGameInfo (appId) {
-  return (axios.get({
-    url: urlGetGameInfo,
-    data: {
+  return (axios.get(urlGetGameInfo, {
+    params: {
       appid: appId,
-      format: 'jsonp'
+      key: apiKey
     }
   })
   )

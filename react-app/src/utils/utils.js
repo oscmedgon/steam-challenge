@@ -32,24 +32,21 @@ function checkUser (userInput) {
     return verifyUserName(userInput)
   }
 }
-function matchGames(player1Games, player2Games, updateGameList){
-  const aMatchedGames = player1Games.filter(function(misagame) {
-    return player2Games.find(function (tusagame){
-      return tusagame === misagame
+function matchGames (player1Games, player2Games, updateGameList) {
+  const aMatchedGames = player1Games.games.filter(function (misagame) {
+    return player2Games.games.find(function (tusagame) {
+      return tusagame.appid === misagame.appid
     })
   })
-  console.log(aMatchedGames)
+  updateGameList(aMatchedGames)
 }
 
 function getGamesList (id1, id2, updateGameList) {
-  console.log(id1 , id2)
   getUserGameList(id1).then(function (apiData) {
     const player1Games = apiData.data.response
-    console.log(player1Games)
     getUserGameList(id2).then(function (apiData) {
       const player2Games = apiData.data.response
-      console.log(player2Games)
-      matchGames([player1Games, player2Games, updateGameList])
+      matchGames(player1Games, player2Games, updateGameList)
     }
   )
   }

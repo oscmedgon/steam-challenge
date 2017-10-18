@@ -4,7 +4,7 @@ import {checkUser} from '../utils/utils'
 import UserCard from './UserCard'
 
 class SelectPlayers extends Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       player1: {
@@ -12,7 +12,7 @@ class SelectPlayers extends Component {
         status: 'pend'
       },
       player2: {
-        input: 'asf',
+        input: 'jaxalbert',
         status: 'pend'
       }
     }
