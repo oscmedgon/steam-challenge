@@ -5,15 +5,12 @@ const PlayerOkCard = ({player}) => {
   return (
     <div className='row'>
       <div>
-        <div className='col-xs-3'>
+        <div className='col-xs-4'>
           <img className='img-responsive' src={player.avatarfull} alt='user avatar' />
         </div>
-        <div className='col-xs-9'>
+        <div className='col-xs-8'>
           <h2>{player.personaname}</h2>
-        </div>
-      </div>
-      <div className='col-xs-12'>
-        <p>
+          <p>
           <strong>
             Profile URL:
           </strong>
@@ -37,7 +34,9 @@ const PlayerOkCard = ({player}) => {
             {player.personaname}
           </span>
         </p>
+        </div>
       </div>
+     
     </div>
   )
 

@@ -1,4 +1,4 @@
-import {getUserInfo, getSteamId} from '../services/steamApi'
+import {getUserGameList, getUserInfo, getSteamId} from '../services/steamApi'
 
 function verifySteamId(input) {
     return getUserInfo(input)
@@ -41,4 +41,11 @@ function checkUser(userInput) {
     }
 }
 
-export {checkUser}
+function getGamesList (id1, id2){
+	console.log(id1)
+ getUserGameList(id1).then(function (apiData){
+ 	console.log (apiData.data.response)
+ })
+}
+ 
+export {checkUser, getGamesList}

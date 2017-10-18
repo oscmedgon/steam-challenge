@@ -39,7 +39,8 @@ function getUserInfo (steamid) {
 // This function returns the list of games of an user
 
 function getUserGameList (steamid) {
-
+  console.log(steamid)
+  console.log(typeof (steamid))
   return (axios.get(urlSearchUserGameList ,{
       params: {
       steamid: steamid,
