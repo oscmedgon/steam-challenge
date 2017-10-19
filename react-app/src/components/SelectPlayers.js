@@ -3,6 +3,7 @@ import Navbar from './Navigation'
 import {checkUser} from '../utils/utils'
 import UserCard from './UserCard'
 import Info from './Info'
+import './SelectPlayers.css'
 
 class SelectPlayers extends Component {
   constructor () {
@@ -60,9 +61,12 @@ class SelectPlayers extends Component {
 
   render () {
     return (
-      <div>
+      <div className= "mainBody">
         <div className='container'>
+        <div className='row'>
           <div className='row'>
+            <img src='../img/logo.png'/>
+          </div>
             <form onSubmit={this.handleSubmit}>
               <div className='col-sm-5'>
                 <input onChange={this.handleChange} value={this.state.player1.input} data-id='player1' className='form-control imput-lg' type='text' required />
