@@ -61,12 +61,18 @@ class SelectPlayers extends Component {
 
   render () {
     return (
-      <div>
+      <div className= "mainBody">
         <div className='container'>
+<<<<<<< HEAD
           <div className='pageLogo'>
             <img src="./img/logoescudo.png" width='200px' alt='logo'/>
           </div>
+=======
+        <div className='row'>
+>>>>>>> 7b9ae3d468d17f9a0ff7bdf6e170570f4ddcd271
           <div className='row'>
+            <img src='../img/logo.png'/>
+          </div>
             <form onSubmit={this.handleSubmit}>
               <div className='col-sm-5'>
                 <input onChange={this.handleChange} value={this.state.player1.input} data-id='player1' className='form-control imput-lg' type='text' required />
