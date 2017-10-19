@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-
+import Footer from './Footer'
 import './Home.css'
 
 const Home = props => (
@@ -23,6 +23,7 @@ const Home = props => (
       </Link>
 
     </div>
+    <Footer/>
   </section>
 )
 
