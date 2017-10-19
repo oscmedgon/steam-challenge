@@ -75,4 +75,5 @@ function getGameInfo (appId) {
   )
 }
 
+
 export {getGameInfo, searchGameAchivements, getSteamId, getUserInfo, getUserGameList}
