@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Navbar from './Navigation'
 import {checkUser} from '../utils/utils'
 import UserCard from './UserCard'
+import Info from './Info'
 
 class SelectPlayers extends Component {
   constructor () {
@@ -32,35 +33,34 @@ class SelectPlayers extends Component {
   handleSubmit (e) {
     e.preventDefault()
 
-      const players = {}
+    const players = {}
 
-      const check1 = checkUser(this.state.player1.input)
-          .then(function(res) {
-              players.player1 = res
-          })
+    const check1 = checkUser(this.state.player1.input)
+        .then(function (res) {
+          players.player1 = res
+        })
 
-      const check2 = checkUser(this.state.player2.input)
-          .then(function(res) {
-              players.player2 = res
-          })
+    const check2 = checkUser(this.state.player2.input)
+        .then(function (res) {
+          players.player2 = res
+        })
 
-      Promise.all([check1, check2])
-          .then(() => {
-              this.setPlayers(players.player1, players.player2)
-          })
+    Promise.all([check1, check2])
+        .then(() => {
+          this.setPlayers(players.player1, players.player2)
+        })
   }
 
-  setPlayers(player1, player2) {
-      this.setState({
-          player1,
-          player2
-      })
+  setPlayers (player1, player2) {
+    this.setState({
+      player1,
+      player2
+    })
   }
 
   render () {
     return (
       <div>
-        <Navbar />
         <div className='container'>
           <div className='row'>
             <form onSubmit={this.handleSubmit}>
@@ -76,7 +76,7 @@ class SelectPlayers extends Component {
             </form>
           </div>
         </div>
-          {this.state.player1.status !== 'pend' && this.state.player2.status !== 'pend' && <UserCard data={this.state} /> || undefined}
+        {this.state.player1.status !== 'pend' && this.state.player2.status !== 'pend' && <UserCard data={this.state} /> || <Info />}
       </div>
     )
   }

@@ -1,44 +1,11 @@
-import React,{Component} from 'react'
+import React, {Component} from 'react'
 import {getGameInfo} from './../services/steamApi'
 
-/*
-constructor() {
-  super()
-
-  this.state = {
-    games: []
-  }
-}
-
-componentWillMount() {
-  const games = []
-
-  const calls = this.props.MatchedGames.map(function(game) {
-    return "ajax-call-api".getGameInfo(game.appId)
-         .then(function(game) {
-           games.push(game)
-       })
-  })
-
-  Promise.all(calls)
-  .then(() => {
-      this.setState({games})
-
-  })
-}
-
-render() {
-  // TODO use state games to fullfill games information
-}
-
-
-
-*/
 class MatchedList extends Component {
-  constructor(props){
+  constructor (props) {
     super(props)
     this.state = {
-      games : []
+      games: []
     }
   }
 
@@ -53,19 +20,19 @@ class MatchedList extends Component {
     })
     Promise.all(calls)
     .then(() => {
-        this.setState({
-          games: games
-        })
-
-    })
+      this.setState({
+        games: games
+      })
+    }
+  )
   }
   render () {
     return (
 
-        this.state.games.filter((obj)=>{
+        this.state.games.filter((obj) => {
           console.log(obj.gameName)
-          return  obj.gameName !== undefined && !obj.gameName.includes('ValveTestApp') && obj.gameName !== ''
-        }).map(function(game,i){
+          return obj.gameName !== undefined && !obj.gameName.includes('ValveTestApp') && obj.gameName !== ''
+        }).map(function (game, i) {
           return <li className='col-sm-6 col-md-4' key={i}>{game.gameName}</li>
         })
 
