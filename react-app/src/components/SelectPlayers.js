@@ -3,6 +3,7 @@ import Navbar from './Navigation'
 import {checkUser} from '../utils/utils'
 import UserCard from './UserCard'
 import Info from './Info'
+import './SelectPlayers.css'
 
 class SelectPlayers extends Component {
   constructor () {
@@ -62,6 +63,9 @@ class SelectPlayers extends Component {
     return (
       <div>
         <div className='container'>
+          <div className='pageLogo'>
+            <img src="./img/logoescudo.png" width='200px' alt='logo'/>
+          </div>
           <div className='row'>
             <form onSubmit={this.handleSubmit}>
               <div className='col-sm-5'>
