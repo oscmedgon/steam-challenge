@@ -11,7 +11,7 @@ function verifySteamId (input) {
 
       return player
     } else {
-      return {input: '', status: 'ko'}
+      return {input: input, status: 'ko'}
     }
   })
 }
@@ -22,7 +22,7 @@ function verifyUserName (input) {
     if (ApiData.data.response.steamid) {
       return verifySteamId(ApiData.data.response.steamid)
     } else {
-      return {input: '', status: 'ko'}
+      return {input: input, status: 'ko'}
     }
   })
 }
