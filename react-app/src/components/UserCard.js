@@ -4,6 +4,7 @@ import PlayerKoCard from './playerKO'
 import GameList from './GameList'
 import Info from './Info'
 
+const defaultImg = 'https://conferencecloud-assets.s3.amazonaws.com/default_avatar.png'
 const UserCard = ({data}) => {
   // if( players.player1.match(/(\b\d{17}\b)/) && players.player2.match(/(\b\d{17}\b)/)) {
   //   var msg = 'TODO VA BIEN'
