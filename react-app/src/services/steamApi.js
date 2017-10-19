@@ -7,6 +7,8 @@ const urlSearchUserGameList = 'https://api.steampowered.com/IPlayerService/GetOw
 const urlGameAchivements = 'http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/'
 const urlUserInfo = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/'
 const urlGetGameInfo = 'https://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/'
+const urlGetFriendList = 'http://api.steampowered.com/ISteamUser/GetFriendList/v0001/'
+const urlGetPlayerBans = 'http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/'
 
 // This function should be called with a string
 // This function converts a username to a steamID
@@ -28,8 +30,7 @@ function getUserInfo (steamid) {
   return (axios.get(urlUserInfo, {
     params: {
       steamids: steamid,
-      key: apiKey,
-      format: 'jsonp'
+      key: apiKey
     }
   })
   )
@@ -40,10 +41,9 @@ function getUserInfo (steamid) {
 
 function getUserGameList (steamid) {
   return (axios.get(urlSearchUserGameList, {
-      params: {
+    params: {
       steamid: steamid,
-      key: apiKey,
-      format: 'jsonp'
+      key: apiKey
     }
   })
   )
@@ -56,8 +56,7 @@ function searchGameAchivements (appId, steamid) {
     params: {
       appid: appId,
       key: apiKey,
-      steamid: steamid,
-      format: 'jsonp'
+      steamid: steamid
     }
   })
   )
@@ -75,5 +74,25 @@ function getGameInfo (appId) {
   )
 }
 
+function getFriends (steamid) {
+  return (axios.get(urlGetFriendList, {
+    params: {
+      steamid: steamid,
+      key: apiKey,
+      relationship: 'friend'
+    }
+  })
+  )
+}
 
-export {getGameInfo, searchGameAchivements, getSteamId, getUserInfo, getUserGameList}
+function getPlayerBans (steamid) {
+  return (axios.get(urlGetPlayerBans, {
+    params: {
+      steamids: steamid,
+      key: apiKey
+    }
+  })
+  )
+}
+
+export {getGameInfo, searchGameAchivements, getSteamId, getUserInfo, getUserGameList, getFriends, getPlayerBans}

@@ -1,4 +1,4 @@
-import {getUserGameList, getUserInfo, getSteamId} from '../services/steamApi'
+import {getUserGameList, getUserInfo, getSteamId, getFriends, getPlayerBans} from '../services/steamApi'
 // Esta función recibe el ID  desde la función  checkUser o dsd verify UserName, según qué haya introducido el usuario
 // retorna otra llamada a la API ( getUserInfo) si el ID existe es OK y guarda la info del player
 function verifySteamId (input) {
@@ -56,18 +56,56 @@ function getGamesList (id1, id2, updateGameList) {
 )
 }
 
-function playerCheckInfo (userInput) {
+function playerCheckInfo (userInput, updater) {
   if (userInput.match(/(\b\d{17}\b)/)) {
-    console.log(userInput, 'es un id')
+    checkPlayerSteamId(userInput, updater)
   } else {
-    checkPlayerVanityUrl(userInput)
+    checkPlayerVanityUrl(userInput, updater)
   }
 }
 
-function checkPlayerVanityUrl (vanityUrl) {
+function checkPlayerVanityUrl (vanityUrl, updater) {
   getSteamId(vanityUrl).then(function (data) {
     console.log(data.data.response)
+    if (data.data.response.success === 1) {
+      const steamID = data.data.response.steamid
+      const apiResponses = []
+      checkPlayerSteamId(steamID, updater)
+        .then(function (data) {
+          apiResponses.push(data.data.response.players[0])
+        })
+      checkPlayerGameList(steamID)
+        .then(function (data) {
+          apiResponses.push(data.data.response)
+        })
+      checkFriendList(steamID)
+        .then(function (data) {
+          apiResponses.push(data.data.friendslist)
+        })
+      checkPlayerBanns(steamID)
+        .then(function (data) {
+          apiResponses.push(data.data.players[0])
+        })
+      Promise.all([checkPlayerSteamId, checkPlayerGameList, checkFriendList, checkPlayerBanns])
+          .then(() => {
+            updater(apiResponses, 'ok')
+          })
+    } else {
+      updater({}, 'ko')
+    }
   })
+}
+function checkPlayerSteamId (steamId) {
+  return getUserInfo(steamId)
+}
+function checkPlayerGameList (steamId) {
+  return getUserGameList(steamId)
+}
+function checkFriendList (steamId) {
+  return getFriends(steamId)
+}
+function checkPlayerBanns (steamid) {
+  return getPlayerBans(steamid)
 }
 
 export {checkUser, getGamesList, playerCheckInfo}

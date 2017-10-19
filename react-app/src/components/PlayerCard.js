@@ -7,19 +7,30 @@ class PlayerCard extends Component {
     super()
     this.state = {
       userInfo: {},
-      userBans: {},
-      userGames: {}
+      status: 'pend'
     }
+    this.statusUpdater = this.statusUpdater.bind(this)
+  }
+  statusUpdater (userInfo, status) {
+    this.setState({
+      userInfo: userInfo,
+      status: status
+    })
   }
   componentWillMount () {
-    playerCheckInfo(this.props.userInput.playerInfo.input)
+    playerCheckInfo(this.props.userInput.playerInfo.input, this.statusUpdater)
   }
   componentWillReceiveProps (props) {
-    playerCheckInfo(props.userInput.playerInfo.input)
+    playerCheckInfo(props.userInput.playerInfo.input, this.statusUpdater)
   }
   render () {
+    console.log(this.state)
     return (
-      <h1>Hey!!! que pasa {this.props.userInput.playerInfo.input}</h1>
+      <div>
+        <h1>Hey!!! que pasa {this.props.userInput.playerInfo.input}</h1>
+        {this.state.status === 'ok' ? 'todo OK' : 'Algo ha ido mal'}
+      </div>
+
     )
   }
 }
