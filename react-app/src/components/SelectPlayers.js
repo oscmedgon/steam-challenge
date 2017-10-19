@@ -93,15 +93,12 @@ class SelectPlayers extends Component {
           <div className='pageLogo'>
             <img src="./img/logoescudo.png" width='200px' alt='logo'/>
           </div>
-          <div className='row'>
-            <img src='../img/logo.png'/>
-          </div>
             <form onSubmit={this.handleSubmit}>
               <div className='col-sm-5'>
                 <input onChange={this.handleChange} data-id='player1' className='form-control imput-lg' type='text' required />
               </div>
               <div className='col-sm-2'>
-                <button>-VS-</button>
+                <button className='col-xs-8 col-xs-offset-2 fight'>F I G H T !</button>
               </div>
               <div className='col-sm-5'>
                 <input onChange={this.handleChange} data-id='player2' className='form-control imput-lg' type='text' required />
