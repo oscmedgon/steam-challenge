@@ -1,19 +1,21 @@
 import React, {Component} from 'react'
 
 import {playerCheckInfo} from '../utils/utils'
+import PlayerOneNok from './PlayerOneNok'
+import PlayerOneOk from './PlayerOneOk'
 
 class PlayerCard extends Component {
   constructor () {
     super()
     this.state = {
-      userInfo: {},
+      playerInfo: {},
       status: 'pend'
     }
     this.statusUpdater = this.statusUpdater.bind(this)
   }
-  statusUpdater (userInfo, status) {
+  statusUpdater (playerInfo, status) {
     this.setState({
-      userInfo: userInfo,
+      playerInfo: playerInfo,
       status: status
     })
   }
@@ -24,11 +26,9 @@ class PlayerCard extends Component {
     playerCheckInfo(props.userInput.playerInfo.input, this.statusUpdater)
   }
   render () {
-    console.log(this.state)
     return (
       <div>
-        <h1>Hey!!! que pasa {this.props.userInput.playerInfo.input}</h1>
-        {this.state.status === 'ok' ? 'todo OK' : 'Algo ha ido mal'}
+        {this.state.status === 'ok' ? <PlayerOneOk playerInfo={this.state} /> : <PlayerOneNok playerInput={this.props.userInput.playerInfo.input} />}
       </div>
 
     )

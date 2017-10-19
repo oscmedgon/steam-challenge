@@ -25,7 +25,7 @@ class PlayerInfo extends Component {
       <div>
         <Navbar />
         <PlayerSearch updateMain={this.updateState} />
-        {this.state.status === 'pend' ? <Info /> : <PlayerCard userInput={this.state} />}
+        {this.state.status === 'pend' ? <div className='info container'><Info /></div> : <PlayerCard userInput={this.state} />}
       </div>
     )
   }
