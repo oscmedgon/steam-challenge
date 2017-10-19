@@ -56,8 +56,18 @@ function getGamesList (id1, id2, updateGameList) {
 )
 }
 
-function playerCheckInfo (input) {
-  console.log(input)
+function playerCheckInfo (userInput) {
+  if (userInput.match(/(\b\d{17}\b)/)) {
+    console.log(userInput, 'es un id')
+  } else {
+    checkPlayerVanityUrl(userInput)
+  }
+}
+
+function checkPlayerVanityUrl (vanityUrl) {
+  getSteamId(vanityUrl).then(function (data) {
+    console.log(data.data.response)
+  })
 }
 
 export {checkUser, getGamesList, playerCheckInfo}
