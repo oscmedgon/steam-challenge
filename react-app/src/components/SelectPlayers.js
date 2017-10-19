@@ -63,13 +63,9 @@ class SelectPlayers extends Component {
     return (
       <div className= "mainBody">
         <div className='container'>
-<<<<<<< HEAD
           <div className='pageLogo'>
             <img src="./img/logoescudo.png" width='200px' alt='logo'/>
           </div>
-=======
-        <div className='row'>
->>>>>>> 7b9ae3d468d17f9a0ff7bdf6e170570f4ddcd271
           <div className='row'>
             <img src='../img/logo.png'/>
           </div>
@@ -85,7 +81,6 @@ class SelectPlayers extends Component {
               </div>
             </form>
           </div>
-        </div>
         {this.state.player1.status !== 'pend' && this.state.player2.status !== 'pend' && <UserCard data={this.state} /> || <Info />}
       </div>
     )
