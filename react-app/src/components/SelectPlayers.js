@@ -93,7 +93,7 @@ class SelectPlayers extends Component {
           <div className='pageLogo'>
             <img src="./img/logoescudo.png" width='200px' alt='logo'/>
           </div>
-            <form onSubmit={this.handleSubmit}>
+            <form className='formusrsrch' onSubmit={this.handleSubmit}>
               <div className='col-sm-5'>
                 <input onChange={this.handleChange} data-id='player1' className='form-control imput-lg' type='text' required />
               </div>
