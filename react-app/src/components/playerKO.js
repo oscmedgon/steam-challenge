@@ -1,11 +1,11 @@
 import React from 'react'
 
 const PlayerKoCard = ({player}) => {
-  console.log(player)
   return (
-    <h1> Estoy malito </h1>
+    <div>
+      <h1 className='alert alert-danger'>Error searching user</h1>
+      <p>The user: {player.input} doesn't exist. Please enter a valid user, or make sure the profile is not private </p>
+    </div>
   )
-
 }
 export default PlayerKoCard
-
