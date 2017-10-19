@@ -1,9 +1,11 @@
 .pageLogo {
+	padding-top:5px;
+	padding-bottom:0px;
 	margin: auto;
-	width: 200px;
+	width: 70px;
 }
 .formusrsrch * {
-	margin: 10px 0px;
+	margin: 5px 0px;
 }
 
 .formusrsrch .fight {
@@ -11,10 +13,16 @@
 	font-family: 'Allerta Stencil', sans-serif;
 	font-size: 1.5vw;
 	color: white;
-	text-shadow: 5px 3px black;
-	padding: 5px;
-	border: 3px solid white;
+	text-shadow: 2px 2px black;
+	padding: 0px;
+	
 	border-style: outset;
 	border-radius: 5px;
 	background-color: rgb(52, 103, 151);
+}
+.formusrsrch .fight:hover {
+	text-shadow: 0px 0px 20px white ;
+	background-color: #0C1F3F;
+	color:grey;
+
 }

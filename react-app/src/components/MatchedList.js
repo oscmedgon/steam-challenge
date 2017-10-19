@@ -53,7 +53,14 @@ class MatchedList extends Component {
   }
   render () {
     if (this.state.loading) {
-      return (<div><img src="../img/loading.gif" width="150px"/></div>)
+      return (
+        <div>
+        <h4 className='loadingTitle'>Este proceso puede tardar bastante dependiendo de la cantidad de juegos que tengan los jugadores</h4>
+          <div className="loader">
+            <img src="../img/loading2.gif"  width="150px"/>
+          </div>
+        </div>
+        )
     } else {
       return (
         this.state.games.filter((obj) => {

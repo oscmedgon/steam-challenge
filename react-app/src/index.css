@@ -1,5 +1,5 @@
 body {
-  background-image: url('./img/bg.jpeg');
+  background-image: url('./img/bg.jpg');
   background-repeat: no-repeat;
 
   position: absolute;
@@ -16,13 +16,34 @@ body {
 .gameList{
   max-height: 250px;
   overflow: auto;
-  background-color: rgba(52, 103, 151, 0.7);
+  background-color: rgba(217, 237, 247,0.8);
   font-size: 1.5vw;
-  color: white;
+  color: #31708f;
   padding: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  font-weight: bold;
 }
 .gameList li{
   height: 40px;
   padding: 30px 0px;
 
+}
+footer{
+  position:fixed;
+  bottom:0px;
+  background-color:rgba(0, 0, 0, 0.9) ;
+  text-align:center;
+  width:100%;
+  height:30px;
+  padding-top:10px;
+
+}
+
+.loader {
+  width:150px;
+  margin:auto;
+}
+.loadingTitle{
+  text-align: center;
 }

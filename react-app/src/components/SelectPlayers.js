@@ -4,6 +4,7 @@ import {checkUser} from '../utils/utils'
 import UserCard from './UserCard'
 import Info from './Info'
 import './SelectPlayers.css'
+import Footer from './Footer'
 
 class SelectPlayers extends Component {
   constructor () {
@@ -91,7 +92,7 @@ class SelectPlayers extends Component {
       <div className= "mainBody">
         <div className='container'>
           <div className='pageLogo'>
-            <img src="./img/logoescudo.png" width='200px' alt='logo'/>
+            <img src="./img/logoescudo.png" width='70px' alt='logo'/>
           </div>
             <form className='formusrsrch' onSubmit={this.handleSubmit}>
               <div className='col-sm-5'>
@@ -106,6 +107,7 @@ class SelectPlayers extends Component {
             </form>
           </div>
         {this.state.player1.status !== 'pend' && this.state.player2.status !== 'pend' && <UserCard data={this.state} /> || <Info />}
+      <Footer/>
       </div>
     )
   }
