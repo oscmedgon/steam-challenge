@@ -1,5 +1,5 @@
 .bghome {
-    background-image: url('../img/bg.jpeg');
+    background-image: url('../img/bgdark.jpg');
     background-repeat: no-repeat;
   
     position: absolute;
@@ -11,8 +11,13 @@
     font-family: sans-serif;
     color: rgb(245, 247, 250);
     overflow: hidden;
-  }
-
+}
+.pageLogo {
+	padding-top:5px;
+	padding-bottom:0px;
+	margin: auto;
+	width: 70px;
+}
 .buttons .players {
 display: none;
 position: absolute;

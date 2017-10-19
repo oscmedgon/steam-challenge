@@ -4,9 +4,9 @@ import {Link} from 'react-router-dom'
 import './Home.css'
 
 const Home = props => (
-  <section className='container'>
-    <header >
-      <img src='./img/logoescudo.png' alt='logo' />
+  <section className='container bghome'>
+    <header className='pageLogo'>
+      <img src='./img/logoescudo.png' width='100px' alt='logo'/>
     </header>
     <div className='row'>
       <Link to='/player_info'>
