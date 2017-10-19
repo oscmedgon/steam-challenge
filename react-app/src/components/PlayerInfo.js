@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 
+import PlayerCard from './PlayerCard'
 import Info from './InfoP1'
 import PlayerSearch from './PlayerSearch'
 import Navbar from './Navigation'
@@ -24,7 +25,7 @@ class PlayerInfo extends Component {
       <div>
         <Navbar />
         <PlayerSearch updateMain={this.updateState} />
-        {this.state.status === 'pend' ? <Info /> : <h1>Nothing here</h1>}
+        {this.state.status === 'pend' ? <Info /> : <PlayerCard userInput={this.state} />}
       </div>
     )
   }

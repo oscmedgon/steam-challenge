@@ -56,4 +56,8 @@ function getGamesList (id1, id2, updateGameList) {
 )
 }
 
-export {checkUser, getGamesList}
+function playerCheckInfo (input) {
+  console.log(input)
+}
+
+export {checkUser, getGamesList, playerCheckInfo}
