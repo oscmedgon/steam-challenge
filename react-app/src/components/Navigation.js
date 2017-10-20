@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const Navbar = () => (
   <nav className='navbar navbar-default'>
@@ -10,15 +11,13 @@ const Navbar = () => (
           <span className='icon-bar'></span>
           <span className='icon-bar'></span>
         </button>
-        <a className='navbar-brand' href='#'><img src='http://store.akamai.steamstatic.com/public/shared/images/header/globalheader_logo.png?t=962016' alt='' /></a>
       </div>
       <div className='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
         <ul className='nav navbar-nav'>
-          <li className='active'><a href='#'>Link <span className='sr-only'>(current)</span></a></li>
-          <li><a href='#'>Link</a></li>
-
+        <li className='active'><Link to= '/'>Home<span className='sr-only'>(current)</span></Link></li>
+        <li><Link to= '/player_info'>One Player<span className='sr-only'>(current)</span></Link></li>
+        <li><Link to= '/select_players'>Two Players<span className='sr-only'>(current)</span></Link></li>
         </ul>
-
       </div>
     </div>
   </nav>

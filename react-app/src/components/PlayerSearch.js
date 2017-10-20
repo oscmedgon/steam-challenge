@@ -20,7 +20,7 @@ class PlayerSearch extends Component{
   }
   render () {
     return (
-      <div className='container' >
+      <div className='container logop1' >
         <form onSubmit={this.handleSubmit}>
           <input className='form-control input-lg' type='text' onChange={this.handleChange} value={this.state.input} placeholder='Search your steam account' />
         </form>

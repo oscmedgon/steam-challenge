@@ -90,6 +90,7 @@ class SelectPlayers extends Component {
   render () {
     return (
       <div className= "mainBody">
+        <Navbar/>
         <div className='container'>
           <div className='pageLogo'>
             <img src="./img/logoescudo.png" width='70px' alt='logo'/>

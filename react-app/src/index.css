@@ -60,7 +60,6 @@ footer{
   font-size: 1.5vw;
   font-weight: bold;
 }
-
 .gameInfo{
   margin-top: 20px;
 }
@@ -75,4 +74,13 @@ footer{
 .gameInfo h3{
   font-size: 40px;
   font-weight: bolder;
+}
+.pageLogo {
+	padding-top:5px;
+	padding-bottom:0px;
+	margin: auto;
+	width: 70px;
+}
+.logop1 {
+  margin-top: 20px;
 }
