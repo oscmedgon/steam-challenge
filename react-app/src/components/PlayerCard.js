@@ -28,7 +28,7 @@ class PlayerCard extends Component {
   render () {
     return (
       <div>
-        {this.state.status === 'ok' ? <PlayerOneOk playerInfo={this.state} /> : <PlayerOneNok playerInput={this.props.userInput.playerInfo.input} />}
+        {this.state.status === 'ok' ? <PlayerOneOk playerInfo={this.state.playerInfo} /> : <PlayerOneNok playerInput={this.props.userInput.playerInfo.input} />}
       </div>
 
     )

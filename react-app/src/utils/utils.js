@@ -69,23 +69,23 @@ function checkPlayerVanityUrl (vanityUrl, updater) {
     if (data.data.response.success === 1) {
       const steamID = data.data.response.steamid
       const apiResponses = {}
-      checkPlayerSteamId(steamID, updater)
+      const _checkPlayerSteamId = checkPlayerSteamId(steamID, updater)
         .then(function (data) {
           apiResponses.playerData = (data.data.response.players[0])
         })
-      checkPlayerGameList(steamID)
+      const _checkPlayerGameList = checkPlayerGameList(steamID)
         .then(function (data) {
           apiResponses.playerGames = (data.data.response)
         })
-      checkFriendList(steamID)
+      const _checkFriendList = checkFriendList(steamID)
         .then(function (data) {
           apiResponses.playerFriends = (data.data.friendslist)
         })
-      checkPlayerBanns(steamID)
+      const _checkPlayerBanns = checkPlayerBanns(steamID)
         .then(function (data) {
           apiResponses.playerBanns = (data.data.players[0])
         })
-      Promise.all([checkPlayerSteamId, checkPlayerGameList, checkFriendList, checkPlayerBanns])
+      Promise.all([_checkPlayerSteamId, _checkPlayerGameList, _checkFriendList, _checkPlayerBanns])
           .then(() => {
             updater(apiResponses, 'ok')
           })
