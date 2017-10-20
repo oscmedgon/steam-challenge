@@ -21,7 +21,7 @@ class GameList extends Component {
   }
   render () {
     return (
-      <div className='container'>
+      <div className='container alert alert-warning'>
 				<ul className='list-unstyled row gameList'>
           {this.state.MatchedGames.length !== 0 ?<MatchedList MatchedGames={this.state.MatchedGames} /> : <h2>No hay juegos en común</h2>}
 

@@ -16,9 +16,9 @@ body {
 .gameList{
   max-height: 250px;
   overflow: auto;
-  background-color: rgba(217, 237, 247,0.8);
+  _background-color: rgba(217, 237, 247,0.8);
   font-size: 1.5vw;
-  color: #31708f;
+  _color: #31708f;
   padding: 10px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
