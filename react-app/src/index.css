@@ -60,3 +60,19 @@ footer{
   font-size: 1.5vw;
   font-weight: bold;
 }
+
+.gameInfo{
+  margin-top: 20px;
+}
+.gameInfo ul{
+  font-size: 20px;
+}
+.gameInfo .username{
+  font-size: 40px;
+  font-weight: bolder;
+  text-align: left;
+}
+.gameInfo h3{
+  font-size: 40px;
+  font-weight: bolder;
+}

@@ -1,19 +1,17 @@
 import React from 'react'
 
 const PlayerOneOk = ({playerInfo}) => (
-  <div className='container info'>
+  <div className='container alert alert-warning'>
     <div className='col-xs-12'>
       <div className='col-sm-3'>
-        {console.log(playerInfo)}
         <img src={playerInfo.playerData.avatarfull} className='img-responsive img-circle' alt='playerImg' />
       </div>
       <div className='col-sm-9'>
-        <h2><a href={playerInfo.playerData.profileurl}>{playerInfo.playerData.personaname}</a></h2>
+        <h2 className='username'><a href={playerInfo.playerData.profileurl}>{playerInfo.playerData.personaname}</a></h2>
       </div>
     </div>
-    <div className='col-xs-12'>
+    <div className='col-sm-8 col-sm-offset-2'>
       <ul className='list-unstyled'>
-        {console.log(playerInfo.playerFriends, 'no, yo soy player info')}
         <li><strong>Username:</strong> {playerInfo.playerData.personaname}</li>
         <li><strong>Profile URL:</strong> {playerInfo.playerData.profileurl}</li>
         <li><strong>SteamID</strong> {playerInfo.playerData.steamid}</li>
