@@ -66,25 +66,24 @@ function playerCheckInfo (userInput, updater) {
 
 function checkPlayerVanityUrl (vanityUrl, updater) {
   getSteamId(vanityUrl).then(function (data) {
-    console.log(data.data.response)
     if (data.data.response.success === 1) {
       const steamID = data.data.response.steamid
-      const apiResponses = []
+      const apiResponses = {}
       checkPlayerSteamId(steamID, updater)
         .then(function (data) {
-          apiResponses.push(data.data.response.players[0])
+          apiResponses.playerData = (data.data.response.players[0])
         })
       checkPlayerGameList(steamID)
         .then(function (data) {
-          apiResponses.push(data.data.response)
+          apiResponses.playerGames = (data.data.response)
         })
       checkFriendList(steamID)
         .then(function (data) {
-          apiResponses.push(data.data.friendslist)
+          apiResponses.playerFriends = (data.data.friendslist)
         })
       checkPlayerBanns(steamID)
         .then(function (data) {
-          apiResponses.push(data.data.players[0])
+          apiResponses.playerBanns = (data.data.players[0])
         })
       Promise.all([checkPlayerSteamId, checkPlayerGameList, checkFriendList, checkPlayerBanns])
           .then(() => {
